@@ -1,0 +1,51 @@
+{
+    "source_input": "input/SST1/SST1.ncol",
+    "source_vertices": [
+        11855,
+        17836
+    ],
+    "source_vcount": 29691,
+    "source_ecount": 199179,
+    "coarsened_ecount": 177575,
+    "coarsened_vcount": 22838,
+    "coarsened_vertices": [
+        5002,
+        17836
+    ],
+    "achieved_levels": [
+        10,
+        10
+    ],
+    "reduction_factor": [
+        0.25,
+        0
+    ],
+    "max_levels": [
+        10,
+        10
+    ],
+    "similarity": [
+        "embedding_similarity",
+        "embedding_similarity"
+    ],
+    "matching": [
+        "gmb",
+        "gmb"
+    ],
+    "upper_bound": [
+        null,
+        null
+    ],
+    "gmv": [
+        100,
+        100
+    ],
+    "itr": [
+        null,
+        null
+    ],
+    "level": [
+        3,
+        3
+    ]
+}
