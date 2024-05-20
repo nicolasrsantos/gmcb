@@ -141,130 +141,6 @@ def experiment(train_loader, val_loader, test_loader, model, args):
     return test_loss, test_acc, test_f1, mem_alloc, mem_res, np.sum(runtimes)
 
 
-def check_batch(loader):
-    batches = []
-    num_batches = 0
-    for batch in loader:
-        batches.append(batch)
-        num_batches += 1
-    penultimate_batch = batches[-2]
-    last_batch = batches[-1]
-
-    # no last batch with batch_size 1 yay
-    if last_batch["doc"].batch_size > 1:
-        return loader
-
-    x = []
-    x.extend(last_batch["doc"].x)
-    x.extend(penultimate_batch["doc"].x)
-    x = np.array(x)
-    x = torch.tensor(x, dtype=torch.float)
-
-    y = []
-    y.extend(last_batch["doc"].y)
-    y.extend(penultimate_batch["doc"].y)
-    y = np.array(y)
-    y = torch.tensor(y, dtype=torch.long)
-
-    train_mask = []
-    train_mask.extend(last_batch["doc"].train_mask)
-    train_mask.extend(penultimate_batch["doc"].train_mask)
-    train_mask = np.array(train_mask)
-    train_mask = torch.tensor(train_mask, dtype=torch.bool)
-
-    val_mask = []
-    val_mask.extend(last_batch["doc"].val_mask)
-    val_mask.extend(penultimate_batch["doc"].val_mask)
-    val_mask = np.array(val_mask)
-    val_mask = torch.tensor(val_mask, dtype=torch.bool)
-
-    test_mask = []
-    test_mask.extend(last_batch["doc"].test_mask)
-    test_mask.extend(penultimate_batch["doc"].test_mask)
-    test_mask = np.array(test_mask)
-    test_mask = torch.tensor(test_mask, dtype=torch.bool)
-
-    n_id = []
-    n_id.extend(last_batch["doc"].n_id)
-    n_id.extend(penultimate_batch["doc"].n_id)
-    n_id = np.array(n_id)
-    n_id = torch.tensor(n_id, dtype=torch.long)
-
-    input_id = []
-    input_id.extend(last_batch["doc"].input_id)
-    input_id.extend(penultimate_batch["doc"].input_id)
-    input_id = np.array(input_id)
-    input_id = torch.tensor(input_id, dtype=torch.long)
-
-    batch_size = last_batch["doc"].batch_size + penultimate_batch["doc"].batch_size
-    batch_size = torch.tensor(batch_size, dtype=torch.long)
-
-    word_x = []
-    word_x.extend(last_batch["word"].x)
-    word_x.extend(penultimate_batch["word"].x)
-    word_x = np.array(word_x)
-    word_x = torch.tensor(word_x, dtype=torch.float)
-
-    word_n_id = []
-    word_n_id.extend(last_batch["word"].n_id)
-    word_n_id.extend(penultimate_batch["word"].n_id)
-    word_n_id = np.array(word_n_id)
-    word_n_id = torch.tensor(word_n_id, dtype=torch.long)
-
-    doc_2_w_last = last_batch["doc", "has_word", "word"].edge_index
-    e_id_d2w_last = last_batch["doc", "has_word", "word"].e_id
-    doc_2_w_penultimate = penultimate_batch["doc", "has_word", "word"].edge_index
-    e_id_d2w_pen = penultimate_batch["doc", "has_word", "word"].e_id
-    e_id_d2w = []
-    e_id_d2w.extend(torch.tensor(np.array(e_id_d2w_last), dtype=torch.long))
-    e_id_d2w.extend(torch.tensor(np.array(e_id_d2w_pen), dtype=torch.long))
-
-    doc_2_w = [[el for el in doc_2_w_last[0]], [el for el in doc_2_w_last[1]]]
-    tmp = [el + 1 for el in doc_2_w_penultimate[0]]
-    doc_2_w[0].extend(tmp)
-    tmp = [el + 1 for el in doc_2_w_penultimate[1]]
-    doc_2_w[1].extend(tmp)
-    doc_2_w = torch.tensor(doc_2_w, dtype=torch.long)
-
-    w_2_doc_last = last_batch["word", "is_in_doc", "doc"].edge_index
-    e_id_w2d_last = last_batch["word", "is_in_doc", "doc"].e_id
-    w_2_doc_penultimate = penultimate_batch["word", "is_in_doc", "doc"].edge_index
-    e_id_w2d_pen = penultimate_batch["word", "is_in_doc", "doc"].e_id
-    e_id_w2d = []
-    e_id_w2d.extend(torch.tensor(np.array(e_id_w2d_last), dtype=torch.long))
-    e_id_w2d.extend(torch.tensor(np.array(e_id_w2d_pen), dtype=torch.long))
-
-    w_2_doc = [[w_2_doc_last[0]], [w_2_doc_last[1]]]
-    tmp = [el + 1 for el in w_2_doc_penultimate[0]]
-    w_2_doc[0].extend(tmp)
-    tmp = [el + 1 for el in w_2_doc_penultimate[1]]
-    w_2_doc[1].extend(tmp)
-    w_2_doc = torch.tensor(w_2_doc, dtype=torch.long)
-
-
-    hdata = HeteroData()
-    hdata["doc"].x = x
-    hdata["doc"].y = y
-    hdata["doc"].train_mask = train_mask
-    hdata["doc"].val_mask = val_mask
-    hdata["doc"].test_mask = test_mask
-    hdata["doc"].n_id = n_id
-    hdata["doc"].input_id = input_id
-    hdata["doc"].batch_size = batch_size
-    hdata["word"].x = word_x
-    hdata["word"].n_id = word_n_id
-    hdata["word", "is_in_doc", "doc"].edge_index = w_2_doc
-    hdata["word", "is_in_doc", "doc"].e_id = e_id_w2d
-    hdata["doc", "has_word", "word"].edge_index = doc_2_w
-    hdata["doc", "has_word", "word"].e_id = e_id_d2w
-
-    final_batches = []
-    for i in range(num_batches - 2):
-        final_batches.append(batches[i])
-    final_batches.append(hdata)
-    return final_batches
-
-
 def run(args):
     set_seed(42)
 
@@ -281,6 +157,7 @@ def run(args):
         input_nodes=train_nodes,
         batch_size=args.batch_size
     )
+
     # check for potential batches of size 1. since the mlps used on GIN
     # employ batch norm layers, we cannot batches with a single node.
     train_loader = check_batch(train_loader)
