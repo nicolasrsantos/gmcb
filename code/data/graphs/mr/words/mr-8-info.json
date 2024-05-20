@@ -1,0 +1,51 @@
+{
+    "source_input": "input/mr/mr.ncol",
+    "source_vertices": [
+        10662,
+        18764
+    ],
+    "source_vcount": 29426,
+    "source_ecount": 196826,
+    "coarsened_ecount": 111880,
+    "coarsened_vcount": 13774,
+    "coarsened_vertices": [
+        10662,
+        3112
+    ],
+    "achieved_levels": [
+        10,
+        10
+    ],
+    "reduction_factor": [
+        0,
+        0.25
+    ],
+    "max_levels": [
+        10,
+        10
+    ],
+    "similarity": [
+        "embedding_similarity",
+        "embedding_similarity"
+    ],
+    "matching": [
+        "gmb",
+        "gmb"
+    ],
+    "upper_bound": [
+        null,
+        null
+    ],
+    "gmv": [
+        100,
+        100
+    ],
+    "itr": [
+        null,
+        null
+    ],
+    "level": [
+        8,
+        8
+    ]
+}
