@@ -1,0 +1,51 @@
+{
+    "source_input": "input/WebKB/WebKB.ncol",
+    "source_vertices": [
+        4199,
+        7772
+    ],
+    "source_vcount": 11971,
+    "source_ecount": 324285,
+    "coarsened_ecount": 266902,
+    "coarsened_vcount": 6659,
+    "coarsened_vertices": [
+        4199,
+        2460
+    ],
+    "achieved_levels": [
+        10,
+        10
+    ],
+    "reduction_factor": [
+        0,
+        0.25
+    ],
+    "max_levels": [
+        10,
+        10
+    ],
+    "similarity": [
+        "embedding_similarity",
+        "embedding_similarity"
+    ],
+    "matching": [
+        "gmb",
+        "gmb"
+    ],
+    "upper_bound": [
+        null,
+        null
+    ],
+    "gmv": [
+        100,
+        100
+    ],
+    "itr": [
+        null,
+        null
+    ],
+    "level": [
+        4,
+        4
+    ]
+}
