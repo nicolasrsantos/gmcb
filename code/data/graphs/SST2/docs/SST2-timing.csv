@@ -1,0 +1,5 @@
+Snippet,Time [m],Time [s]
+Pre-processing,0.0,0.0132
+Load graph,0.0,0.7057
+Coarsening,4.0,40.8824
+Save,0.0,0.8001
