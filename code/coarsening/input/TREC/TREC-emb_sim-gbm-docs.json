@@ -1,0 +1,64 @@
+{
+	"vertices": [
+		5952,
+		8783
+	],
+	"reduction_factor": [
+		0.25,
+		0
+	],
+	"max_levels": [
+		10,
+		10
+	],
+	"global_min_vertices": [
+		null,
+		null
+	],
+	"matching": [
+		"gmb",
+		"gmb"
+	],
+	"similarity": [
+		"embedding_similarity",
+		"embedding_similarity"
+	],
+    "seed_priority": [
+        "degree",
+        "degree"
+    ],
+	"upper_bound": [
+		null,
+		null
+	],
+	"itr": [
+		null,
+		null
+	],
+	"tolerance": [
+		null,
+		null
+	],
+	"threads": 2,
+	"output_directory": "coarsened/TREC/docs",
+	"output": "TREC",
+	"input": "input/TREC/TREC.ncol",
+	"word_embs": "input/TREC/TREC.x_word",
+	"doc_embs": "input/TREC/TREC.x_doc",
+	"y_filename": "input/TREC/TREC.y",
+	"data_split": "input/TREC/TREC.splits",
+	"save_conf": true,
+	"save_ncol": true,
+	"save_gml": false,
+	"save_source": false,
+    "save_membership": true,
+	"save_predecessor": false,
+	"save_successor": false,
+	"save_timing_csv": true,
+	"save_timing_json": false,
+	"save_hierarchy": true,
+	"save_weight": true,
+	"unique_key": false,
+	"show_timing": true,
+	"show_conf": false
+}
