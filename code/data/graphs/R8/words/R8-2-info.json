@@ -1,0 +1,51 @@
+{
+    "source_input": "input/R8/R8.ncol",
+    "source_vertices": [
+        7674,
+        7688
+    ],
+    "source_vcount": 15362,
+    "source_ecount": 323670,
+    "coarsened_ecount": 288101,
+    "coarsened_vcount": 11999,
+    "coarsened_vertices": [
+        7674,
+        4325
+    ],
+    "achieved_levels": [
+        10,
+        10
+    ],
+    "reduction_factor": [
+        0,
+        0.25
+    ],
+    "max_levels": [
+        10,
+        10
+    ],
+    "similarity": [
+        "embedding_similarity",
+        "embedding_similarity"
+    ],
+    "matching": [
+        "gmb",
+        "gmb"
+    ],
+    "upper_bound": [
+        null,
+        null
+    ],
+    "gmv": [
+        100,
+        100
+    ],
+    "itr": [
+        null,
+        null
+    ],
+    "level": [
+        2,
+        2
+    ]
+}
