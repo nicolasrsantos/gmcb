@@ -2,15 +2,15 @@ This repository is the official PyTorch implementation of "Semi-Supervised Coars
 
 ## Requirements
 
-This code was implemented using Python 3.11.2, CUDA 11.8 and the following packages:
+This code was implemented using Python 3.11.5, CUDA 12.2 and the following packages:
 
-- `pytorch==2.0.1`
-- `torch-geometric==2.3.0`
-- `numpy==1.24.1`
-- `networkx==3.0`
-- `scikit-learn=1.2.2`
+- `pytorch==2.1.2`
+- `torch-geometric==2.5.3`
+- `numpy==1.26.4`
+- `networkx==3.1`
+- `scikit-learn=1.4.2`
 - `igraph==0.10.4`
-- `scipy==1.7.2`
+- `scipy==1.13.0`
 - `pyyaml==6.0`
 
 ## How to run the code
