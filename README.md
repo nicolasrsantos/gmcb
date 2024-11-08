@@ -4,16 +4,71 @@ This repository is the official PyTorch implementation of "Semi-Supervised Coars
 
 This code was implemented using Python 3.11.5, CUDA 12.2 and the following packages:
 
-- `pytorch==2.1.2`
-- `torch-geometric==2.5.3`
+- `networkx==3.3`
+- `nltk==3.8.1`
 - `numpy==1.26.4`
-- `networkx==3.1`
-- `scikit-learn=1.4.2`
-- `igraph==0.10.4`
-- `scipy==1.13.0`
-- `pyyaml==6.0`
+- `python_igraph==0.11.5`
+- `PyYAML==6.0.1`
+- `scikit_learn==1.4.2`
+- `scipy==1.13.1`
+- `torch==2.1.2`
+- `torch_geometric==2.5.3`
+- `python_igraph==0.11.5`
 
 ## How to run the code
+In order to run our method, you must perform the steps described below.
+
+Under construction.
+
+The following arguments allow the modification of the GNN's hyperparameters:
+
+- `--lr`
+
+    Modifies the model's learning rate.
+  
+    Default: `1e-3`
+
+- `--batch_size`
+
+    Controls our method's batch size.
+  
+    Default: `32`
+
+- `--hidden_dim`
+
+    Number of dimensions used on GraphSAGE. 
+
+    Default: `256`
+
+- `--n_epochs`
+
+    Number of training epochs.
+
+    Default: `200`
+
+- `--patience`
+
+    Number of epochs without validation loss before early stopping.
+
+    Default: `10`
+
+- `--epoch_log`
+
+    Prints information about the network's training every <epoch_log> steps.
+
+    Default: `10`
+
+- `--gpu`
+
+    Trains the network using a GPU (if available).
+
+    Default: `true`
+
+- `--cpu`
+
+    Trains the network using the CPU.
+
+    Default: `false`
 
 ## Reference
 
