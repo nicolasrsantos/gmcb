@@ -109,17 +109,11 @@ The following arguments allow the modification of the GNN's hyperparameters:
 
     Default: `10`
 
-- `--gpu`
+- `--cuda`
 
     Trains the network using a GPU (if available).
 
     Default: `true`
-
-- `--cpu`
-
-    Trains the network using the CPU.
-
-    Default: `false`
 
 ## Reference
 
