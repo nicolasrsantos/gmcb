@@ -55,6 +55,24 @@ Finally, you can train the GNN to perform text classification by running the fol
 
 The following arguments allow the modification of the GNN's hyperparameters:
 
+- `--coarsened`
+
+    Whether the input graph is coarsened or not.
+  
+    Default: `False`
+
+- `--partition`
+
+    Which partition that was coarsened you're going to use to train the GNN. Options are 'docs', 'words', 'both', and 'whole' (corresponds to the original graph).
+  
+    Default: `whole`
+
+- `--coarse_level`
+
+    Level of the coarsened graph used. Must be specified if coarsened=True.
+  
+    Default: `None`
+
 - `--lr`
 
     Modifies the model's learning rate.
